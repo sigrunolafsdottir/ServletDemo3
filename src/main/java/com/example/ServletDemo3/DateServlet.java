@@ -16,7 +16,7 @@ public class DateServlet extends HttpServlet {
         response.setContentType("text/html");
 
         PrintWriter out = response.getWriter();
-        String title = "Total Number of Hits";
+        String title = "Time right now";
         String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " + "transitional//en\">\n";
 
         out.println(docType +
