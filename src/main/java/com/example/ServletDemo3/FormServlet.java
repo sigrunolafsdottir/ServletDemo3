@@ -6,11 +6,11 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "HolaAmigosServlet", value = "/HolaAmigosServlet")
-public class HolaAmigosServlet extends HttpServlet {
+@WebServlet(name = "FormServlet", value = "/FormServlet")
+public class FormServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("in holaAmigoServlet" );
+        System.out.println("in FormServlet" );
         String firstname = request.getParameter("fname");
         String lastname = request.getParameter("lname");
 
@@ -20,6 +20,7 @@ public class HolaAmigosServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("in FormServlet" );
         String firstname = request.getParameter("fname");
         String lastname = request.getParameter("lname");
 
