@@ -8,9 +8,9 @@ import java.util.List;
 
 public class BookDAO{
 
-    public List<Book> getAllBooks() {
+    List<Book> bookList = new ArrayList<>();
 
-        List<Book> bookList = new ArrayList<>();
+    public BookDAO(){
         Book b1 = new Book(1, "Wuthering Heights", "Emily Bronte");
         Book b2 = new Book(2, "Jayne Eyre", "Charlotte Bronte");
         Book b3 = new Book(3, "Crime and Punishment", "Fjodor Dostovjevsky");
@@ -26,8 +26,21 @@ public class BookDAO{
         bookList.add(b5);
         bookList.add(b6);
         bookList.add(b7);
+    }
 
+    public List<Book> getAllBooks() {
         return bookList;
+    }
+
+    public String getBookInfo(String title){
+        System.out.println("in getBookINfo "+title);
+        for (Book b : bookList ){
+            System.out.println("in getBookINfo loop "+title);
+            if (b.getTitle().trim().equalsIgnoreCase(title)){
+                return b.getTitle()+" "+b.getAuthor();
+            }
+        }
+        return null;
     }
 
 }

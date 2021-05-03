@@ -20,25 +20,30 @@ public class BookServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doPost(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("in bookServlet" );
         PrintWriter p = response.getWriter();
-        String title;
-        try {
-            title = request.getParameter("title");
-            //TODO, print book
-        } catch (Exception e) {
-
+        String title = request.getParameter("title");
+        if(title == null){
             p.println("<h1>All books</h1>");
             p.println("<table>");
             for (Book b : bd.getAllBooks()){
                 p.println("<tr><td>"+b.getTitle()+"</td><td>"+b.getAuthor()+"</td></tr>");
             }
             p.println("</table>");
+        }
+        else {
+            String res = bd.getBookInfo(title);
+            if (res == null){
+                p.println("<h1>Book "+title+" could not be found</h1>");
+            }
+            else{
+                p.println("<h1>"+res+" </h1>");
+            }
         }
 
     }
